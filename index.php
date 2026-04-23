@@ -1,9 +1,7 @@
 <?php
 
 session_start();
-require_once __DIR__ . '/../includes/header.php';
-require_once __DIR__ . '/../includes/constants.php';
-require_once __DIR__ . '/../includes/IdObjec.php';
+require_once __DIR__ . '/../classes/constants.php';
 require_once __DIR__ . '/../classes/User.php';
 
 $user = null;
