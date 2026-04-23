@@ -1,1 +1,70 @@
-<?php echo "Home page"; ?>
+<?php
+
+session_start();
+
+require_once __DIR__ . '/classes/constants.php';
+require_once __DIR__ . '/classes/User.php';
+
+$user = null;
+
+if (isset($_SESSION['user_id'])) {
+    foreach ($USERS as $u) {
+        if ($u['id'] == $_SESSION['user_id']) {
+            $user = new User($u['id'], $u['email'], $u['role']);
+            break;
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <title>Campus Lost & Found</title>
+
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+    <?php include __DIR__ . "/includes/header.php"; ?>
+
+    <main>
+        <h1>Campus Lost & Found</h1>
+
+        <?php if ($user): ?>
+            <p>
+                Miresevini, 
+                <strong><?= $user->getEmail() ?></strong> 
+                (<?= $user->getRole() ?>)
+            </p>
+
+            <p>
+                <a href="pages/lost.php">Shiko elemente te humbura</a> |
+                <a href="pages/found.php">Shiko elemente te gjetura</a> |
+                
+                <?php if ($user->isStudent()): ?>
+                    <a href="pages/report.php">Raporto item te humbur</a>
+                <?php endif; ?>
+            </p>
+
+        <?php else: ?>
+            <p>Logohuni që të raportoni apo kërkoni elemente.</p>
+            <a href="pages/login.php">Login</a>
+        <?php endif; ?>
+
+        <?php if (isset($_COOKIE['last_login'])): ?>
+            <p>
+                <small>
+                    U loguat së fundi në: <?= $_COOKIE['last_login'] ?>
+                </small>
+            </p>
+        <?php endif; ?>
+
+    </main>
+
+    <?php include __DIR__ . "/includes/footer.php"; ?>
+
+</body>
+</html>
