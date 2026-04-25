@@ -1,11 +1,11 @@
 <?php
-
 session_start();
 
 require_once __DIR__ . '/../classes/constants.php';
 require_once __DIR__ . '/../classes/User.php';
 require_once __DIR__ . '/../classes/Item.php';
 
+// Get logged user (optional for now)
 $user = null;
 
 if (isset($_SESSION['user_id'])) {
@@ -17,56 +17,68 @@ if (isset($_SESSION['user_id'])) {
     }
 }
 
-$foundItems = [];
-
-foreach ($ITEMS as $item) {
-    if ($item['status'] === 'found') {
-        $foundItems[] = $item;
-    }
-}
+// Filter found items (clean way)
+$foundItems = array_filter($ITEMS, function ($item) {
+    return $item['status'] === 'found';
+});
 ?>
 
 <!DOCTYPE html>
 <html lang="sq">
 <head>
     <meta charset="UTF-8">
-    <title>Elemente të gjetura</title>
-
+    <title>Gjëra të Gjetura</title>
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
 <body>
 
-    <?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/header.php'; ?>
 
-    <main>
-        <h1>Elemente të gjetura</h1>
+<main class="container">
 
-        <?php if (!$user): ?>
-            <p>Logohuni që të shikoni listën e elementeve të gjetura.</p>
-            <a href="login.php">Login</a>
+    <h1>Gjëra të Gjetura</h1>
 
-        <?php elseif (empty($foundItems)): ?>
-            <p>Nuk ka elemente të gjetura të regjistruara në sistem.</p>
+    <?php if (empty($foundItems)): ?>
+        <p>Nuk ka gjëra të gjetura aktualisht.</p>
 
-        <?php else: ?>
-            <ul>
-                <?php foreach ($foundItems as $item): ?>
-                    <li>
-                        <strong><?= $item['title'] ?></strong>
-                        <p><?= $item['description'] ?></p>
-                        <small>Lokacioni: <?= $item['location'] ?></small>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
+    <?php else: ?>
 
-        <p>
-            <a href="../index.php">Kthehu në faqen kryesore</a>
-        </p>
-    </main>
+        <div class="items-grid">
 
-    <?php include __DIR__ . '/../includes/footer.php'; ?>
+            <?php foreach ($foundItems as $item): ?>
+                <div class="item-card">
+
+                    <h3><?= htmlspecialchars($item['title']) ?></h3>
+
+                    <p><?= htmlspecialchars($item['description']) ?></p>
+
+                    <p>
+                        <strong>Lokacioni:</strong>
+                        <?= htmlspecialchars($item['location']) ?>
+                    </p>
+
+                    <?php if (!empty($item['date'])): ?>
+                        <p>
+                            <strong>Data:</strong>
+                            <?= htmlspecialchars($item['date']) ?>
+                        </p>
+                    <?php endif; ?>
+
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+
+    <?php endif; ?>
+
+    <p style="margin-top: 20px;">
+        <a href="../index.php">Kthehu në faqen kryesore</a>
+    </p>
+
+</main>
+
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
 </html>
