@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 require_once __DIR__ . '/../classes/constants.php';
@@ -9,65 +8,74 @@ require_once __DIR__ . '/../classes/Item.php';
 $user = null;
 
 if (isset($_SESSION['user_id'])) {
-    foreach ($USERS as $u) {
-        if ($u['id'] == $_SESSION['user_id']) {
-            $user = new User($u['id'], $u['email'], $u['role']);
-            break;
-        }
-    }
+    $user = new User(
+        $_SESSION['user_id'],
+        $_SESSION['user_email'],
+        $_SESSION['user_role']
+    );
 }
 
-$lostItems = [];
-
-foreach ($ITEMS as $item) {
-    if ($item['status'] === 'lost') {
-        $lostItems[] = $item;
-    }
-}
+$lostItems = array_filter($ITEMS, function ($item) {
+    return $item['status'] === 'lost';
+});
 ?>
 
 <!DOCTYPE html>
 <html lang="sq">
 <head>
     <meta charset="UTF-8">
-    <title>Elemente të humbura</title>
-
-
+    <title>Gjëra të Humbura</title>
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
 <body>
 
-    <?php include __DIR__ . '/../includes/header.php'; ?>
+<?php include __DIR__ . '/../includes/header.php'; ?>
 
-    <main>
-        <h1>Elemente të humbura</h1>
+<main class="container">
 
-        <?php if (!$user): ?>
-            <p>Logohuni që të shikoni listën e elementeve të humbura.</p>
-            <a href="login.php">Login</a>
+    <h1>Gjëra të Humbura</h1>
 
-        <?php elseif (empty($lostItems)): ?>
-            <p>Nuk ka elemente të humbura të regjistruara në sistem.</p>
+    <?php if (empty($lostItems)): ?>
+        <p>Nuk ka gjëra të humbura aktualisht.</p>
 
-        <?php else: ?>
-            <ul>
-                <?php foreach ($lostItems as $item): ?>
-                    <li>
-                        <strong><?= $item['title'] ?></strong>
-                        <p><?= $item['description'] ?></p>
-                        <small>Lokacioni: <?= $item['location'] ?></small>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
+    <?php else: ?>
 
-        <p>
-            <a href="../index.php">Kthehu në faqen kryesore</a>
-        </p>
-    </main>
+        <div class="items-grid">
 
-    <?php include __DIR__ . '/../includes/footer.php'; ?>
+            <?php foreach ($lostItems as $item): ?>
+                <div class="item-card">
+
+                    <h3><?= htmlspecialchars($item['title']) ?></h3>
+
+                    <p><?= htmlspecialchars($item['description']) ?></p>
+
+                    <p>
+                        <strong>Lokacioni:</strong>
+                        <?= htmlspecialchars($item['location']) ?>
+                    </p>
+
+                    <?php if (!empty($item['date'])): ?>
+                        <p>
+                            <strong>Data:</strong>
+                            <?= htmlspecialchars($item['date']) ?>
+                        </p>
+                    <?php endif; ?>
+
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+
+    <?php endif; ?>
+
+    <p class="back-home">
+        <a href="../index.php">Kthehu në faqen kryesore</a>
+    </p>
+
+</main>
+
+<?php include __DIR__ . '/../includes/footer.php'; ?>
 
 </body>
 </html>
