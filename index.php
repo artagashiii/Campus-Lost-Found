@@ -7,12 +7,11 @@ require_once __DIR__ . '/classes/User.php';
 $user = null;
 
 if (isset($_SESSION['user_id'])) {
-    foreach ($USERS as $u) {
-        if ($u['id'] == $_SESSION['user_id']) {
-            $user = new User($u['id'], $u['email'], $u['role']);
-            break;
-        }
-    }
+    $user = new User(
+        $_SESSION['user_id'],
+        $_SESSION['user_email'],
+        $_SESSION['user_role']
+    );
 }
 ?>
 
@@ -28,10 +27,18 @@ if (isset($_SESSION['user_id'])) {
 
 <body>
 
-<?php include __DIR__ . "/includes/header.php"; ?>
+<?php include __DIR__ . "/includes/header.php"; 
+
+/*
+if ($user) {
+    echo "ROLE: " . $user->getRole();
+} else {
+    echo "NO USER";
+} */
+?>
 
 <main class="hero">
-
+    
     <div class="hero-content">
         <h1>Campus Lost & Found</h1>
 

@@ -6,19 +6,16 @@ require_once __DIR__ . '/../classes/constants.php';
 require_once __DIR__ . '/../classes/User.php';
 require_once __DIR__ . '/../classes/Item.php';
 
-// Get logged user (optional for now)
 $user = null;
 
 if (isset($_SESSION['user_id'])) {
-    foreach ($USERS as $u) {
-        if ($u['id'] == $_SESSION['user_id']) {
-            $user = new User($u['id'], $u['email'], $u['role']);
-            break;
-        }
-    }
+    $user = new User(
+        $_SESSION['user_id'],
+        $_SESSION['user_email'],
+        $_SESSION['user_role']
+    );
 }
 
-// Filter found items (clean way)
 $foundItems = array_filter($ITEMS, function ($item) {
     return $item['status'] === 'found';
 });
