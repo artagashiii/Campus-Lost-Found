@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once __DIR__ . '/../includes/header.php';
 
 require_once __DIR__ . '/../classes/constants.php';
 require_once __DIR__ . '/../classes/User.php';

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once __DIR__ . '/../includes/header.php';
 
 require_once __DIR__ . '/../classes/constants.php';
 require_once __DIR__ . '/../classes/User.php';
@@ -30,7 +31,7 @@ $foundItems = array_filter($ITEMS, function ($item) {
 
 <body>
 
-<?php include __DIR__ . '/../includes/header.php'; ?>
+
 
 <main class="container">
 
