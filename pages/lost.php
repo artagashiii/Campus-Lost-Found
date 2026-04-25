@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+include_once __DIR__ . '/../includes/header.php';
 
 require_once __DIR__ . '/../classes/constants.php';
 require_once __DIR__ . '/../classes/User.php';
@@ -38,7 +39,7 @@ foreach ($ITEMS as $item) {
 
 <body>
 
-    <?php include __DIR__ . '/../includes/header.php'; ?>
+   
 
     <main>
         <h1>Elemente të humbura</h1>
