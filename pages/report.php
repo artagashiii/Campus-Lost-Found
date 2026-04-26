@@ -53,8 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../includes/header.php'; ?>
-
     <main class="auth-container">
         <div class="auth-box">
             <h1>Raporto Item</h1>
