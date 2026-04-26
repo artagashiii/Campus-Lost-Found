@@ -18,7 +18,7 @@ body{ background:
 
     background: 
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("images/NationalLibrary.jpg") no-repeat center center/cover;
+        url("images/vidCampus.mp4") no-repeat center center/cover;
 }
 
 .hero-content {
