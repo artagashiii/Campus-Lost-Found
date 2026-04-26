@@ -21,20 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description'] ?? '');
     $status = $_POST['status'] ?? 'lost';
 
-    // VALIDIMI ME REGEX (Pika 5 e specifikimit)
-    
-    // 1. Titulli: Vetëm shkronja dhe hapësira, 3-30 karaktere
     if (!preg_match("/^[a-zA-Z\s]{3,30}$/", $title)) {
         $errors[] = "Titulli duhet të jetë vetëm shkronja (3-30 karaktere).";
     }
 
-    // 2. Lokacioni: Duhet të fillojë me shkronjë të madhe
     if (!preg_match("/^[A-Z][a-zA-Z0-9\s]{2,50}$/", $location)) {
         $errors[] = "Lokacioni duhet të fillojë me shkronjë të madhe.";
     }
 
     if (empty($errors)) {
-        // Krijimi i objektit (Demonstrim i OOP)
         $newReport = new ReportedItem(
             rand(100, 999), 
             $title, 
