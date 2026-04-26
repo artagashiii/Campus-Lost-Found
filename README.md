@@ -2,6 +2,10 @@
 
 Platformë web për raportimin dhe gjetjen e sendeve të humbura brenda kampusit universitar. Projekti është ndërtuar me PHP (vanilla) duke u fokusuar në arkitekturën OOP dhe menaxhimin e sesioneve.
 
+Punuar nga: 
+Arta Gashi
+Aulona Xhema
+Argjenta Trepça
 ---
 
 ## Struktura e Folderëve
