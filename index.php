@@ -38,7 +38,11 @@ if ($user) {
 ?>
 
 <main class="hero">
-    
+    <video autoplay muted loop playsinline class="back-video">
+    <source src="assets/images/vidCampus.mp4" type="video/mp4">
+</video>
+
+<div class="hero-overlay"></div>
     <div class="hero-content">
         <h1>Campus Lost & Found</h1>
 

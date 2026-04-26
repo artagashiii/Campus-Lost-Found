@@ -2,6 +2,11 @@
 
 Platformë web për raportimin dhe gjetjen e sendeve të humbura brenda kampusit universitar. Projekti është ndërtuar me PHP (vanilla) duke u fokusuar në arkitekturën OOP dhe menaxhimin e sesioneve.
 
+Punuar nga: 
+Arta Gashi
+Argjenta Trepça
+Aulona Xhema
+
 ---
 
 ## Struktura e Folderëve
@@ -33,8 +38,13 @@ Pasi projekti nuk përdor databazë në këtë fazë, përdorni këto llogari:
 ---
 
 ## Instruksionet e Ekzekutimit
+Për të hapur dhe testuar projektin, ndiqni hapat e mëposhtëm:
 
-1. Vendosni projektin në folderin `htdocs` të XAMPP  
-2. Emëroni folderin: `Campus-Lost-Found`  
-3. Startoni **Apache Server**  
-4. Aksesoni në browser:  
+Shkarkoni projektin: Shkarkoni skedarët dhe vendosni folderin në direktorinë htdocs të instalimit tuaj XAMPP.
+
+Emërtimi: Sigurohuni që folderi i projektit të jetë emërtuar saktësisht: Campus-Lost-Found.
+
+Aktivizoni Serverin: Hapni XAMPP Control Panel dhe startoni modulin Apache.
+
+Aksesi në Browser: Hapni browser-in tuaj (Chrome, Firefox, etj.) dhe shkruani adresën e mëposhtme në address bar:
+http://localhost/Campus-Lost-Found/index.php

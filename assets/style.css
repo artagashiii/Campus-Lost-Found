@@ -1,30 +1,64 @@
+
 html, body {
     margin: 0;
     padding: 0;
 }
 
-body{ background: 
-        linear-gradient(rgba(0,0,0,0.3), rgba(0, 0, 0, 0.6)),
-        url("images/NationalLibrary.jpg") no-repeat center center/cover;}
+.bg-static {
+    background: 
+        linear-gradient(rgba(0,0,0,0.5), rgba(0, 0, 0, 0.7)),
+        url("images/NationalLibrary.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
 
 .hero {
     height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-
-    background: 
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("images/NationalLibrary.jpg") no-repeat center center/cover;
+    position: relative; 
+    overflow: hidden;    
 }
-
+.hero + footer {
+    background-color: #333; 
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    position: relative;
+    z-index: 10;
+}
+    .back-video {
+ position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    min-width: 100%; 
+    min-height: 100%; 
+    
+    object-fit: cover; 
+  
+    transform: translate(-50%, -50%);
+    
+    z-index: -1;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
 .hero-content {
+    position: relative;
+    z-index: 1;
     max-width: 700px;
     padding: 20px;
 }
+
 
 .hero h1 {
     font-size: 3rem;
@@ -36,7 +70,6 @@ body{ background:
     margin-bottom: 25px;
     color: #ddd;
 }
-
 
 
 .welcome {
@@ -102,19 +135,18 @@ body{ background:
 .container {
     width: 80%;
     margin: auto;
-    
 }
 .items-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
 }
 .item-card {
-    background: rgba(199, 203, 211, 0.8); 
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 
@@ -175,8 +207,5 @@ body{ background:
 
     .hero-subtitle {
         font-size: 1rem;
-    }
-     .items-grid {
-        grid-template-columns: 1fr;
     }
 }
