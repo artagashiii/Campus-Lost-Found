@@ -4,8 +4,9 @@ Platformë web për raportimin dhe gjetjen e sendeve të humbura brenda kampusit
 
 Punuar nga: 
 Arta Gashi
-Aulona Xhema
 Argjenta Trepça
+Aulona Xhema
+
 ---
 
 ## Struktura e Folderëve
