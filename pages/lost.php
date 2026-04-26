@@ -31,7 +31,7 @@ $lostItems = array_filter($ITEMS, function ($item) {
 
 <body>
 
-<?php include __DIR__ . '/../includes/header.php'; ?>
+
 
 <main class="container">
 
@@ -69,11 +69,13 @@ $lostItems = array_filter($ITEMS, function ($item) {
         </div>
 
     <?php endif; ?>
-
+    
     <p class="back-home">
-        <a href="../index.php">Kthehu në faqen kryesore</a>
+        <div class="hero-buttons">
+        <a href="../index.php" class="btn accent">Kthehu në faqen kryesore</a>
+        </div>
     </p>
-
+    
 </main>
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>

@@ -70,8 +70,10 @@ $foundItems = array_filter($ITEMS, function ($item) {
 
     <?php endif; ?>
 
-    <p style="margin-top: 20px;">
-        <a href="../index.php">Kthehu në faqen kryesore</a>
+   <p class="back-home">
+        <div class="hero-buttons">
+        <a href="../index.php" class="btn accent">Kthehu në faqen kryesore</a>
+        </div>
     </p>
 
 </main>
