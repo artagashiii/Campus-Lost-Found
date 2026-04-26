@@ -29,7 +29,7 @@ $lostItems = array_filter($ITEMS, function ($item) {
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
-<body>
+<body class="bg-static">
 
 
 

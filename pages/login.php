@@ -79,7 +79,7 @@ $allUsers = array_merge($USERS, $_SESSION['registered_users']);
     <link rel="stylesheet" href="../assets/style.css">
 </head>
 
-<body>
+<body class="bg-static">
 
 <?php include __DIR__ . '/../includes/header.php'; ?>
 

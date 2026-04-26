@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Raporto Item | Campus Lost & Found</title>
     <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body class="bg-static">
     <main class="auth-container">
         <div class="auth-box">
             <h1>Raporto Item</h1>
